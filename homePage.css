@@ -1,0 +1,29 @@
+nav {
+    background-color: #ADE381;
+    padding: 10px;
+    margin: -8px;
+
+}
+
+h1 {
+    background-color: #ADE381;
+    text-align: center;
+}
+
+ul {
+    text-align: center;
+    padding: 0px;
+}
+
+li {
+    display: inline-block;
+    margin: 0px 20px;
+}
+
+a {
+    /* font-weight: 200;
+    text-decoration: none;
+    text-transform: lowercase;
+    font-family: Helvetica;
+    color: #151814; */
+}
