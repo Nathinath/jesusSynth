@@ -1,0 +1,4 @@
+1) Enregistrer la note avec Rec.py
+2) Ecouter l'enregistrement pour verifier que ca sature pas
+3) Utiliser visualizeSound et verifier que le threshold ne coupe pas le début du son
+4) Prendre et verifier les résultats de la classification des pics en hamroniques
