@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Instrument analyzer</title>
+  <link rel="stylesheet" href="http://localhost:3000/vendor/bootstrap/bootstrap.css">
+  <link rel="stylesheet" href="http://localhost:3000/style.css">
+  
+</head>
+<body>
+  <nav class="navbar py-0">
+    <ul class="list-unstyled list-inline my-3 mx-4">
+      <li class="list-inline-item mx-2"><a class="active p-2" href="#">Home</a></li>
+      <li class="list-inline-item mx-2"><a class="p-2" href="#">Record</a></li>
+      <li class="list-inline-item mx-2"><a class="p-2" href="#">Spectrum</a></li>
+      <li class="list-inline-item mx-2"><a class="p-2" href="#">Envelope</a></li>
+    </ul>              
+  </nav>
+
+  <h1 class="text-center my-3">Instrument analyzer</h1>
+  
+  <h2 class="ml-5 pl-5 mb-3">Record sound or upload wav</h2>
+  <!-- Main.js get the action & method to send the request to the api. Uses the name to store the received data to the localDB. The name of the inputs are the JSON keys-->
+  <!-- The element next a form must be a highcharts graph! Main.js sends the received data to the form's next element (which must be a highchart graph).-->
+  <form id="formRec" name="rawSignal" action="http://localhost:3000/record" method="POST" class="mx-5"> 
+    <div class="form-row">
+      <div class="form-group offset-sm-1 col-md-2">
+        <label for="recFileName">File name</label>
+        <input type="text" value="fileName" name="recFileName" class="form-control">
+      </div>   
+      <div class="form-group offset-sm-2 col-md-2">
+        <label for="recDuration">Duration</label>
+        <input type="number" value="2" name="recDuration" class="form-control">
+      </div>         
+      <div class="form-group offset-sm-2 col-md-2">
+        <label for="recSampleRate">Sample rate</label>
+        <input type="number" value="44100" name="recSampleRate" class="form-control">
+      </div>         
+    </div>
+    <div class="text-center py-3">
+      <button type="submit" class="btn btn-outline-success pill px-3 py-2">Start record</button>
+    </div>  
+  </form>
+
+  <div id="rawSignalGraph" class="lineChart my-3"></div>
+
+  <h2 class="ml-5 mt-5 pl-5 mb-3">Data preprocessing</h2>
+  <form id="formPrep" name="preprocSignal" action="http://localhost:3000/preprocess" method="POST" class="mx-5"> 
+    <div class="form-row">
+      <div class="form-group offset-sm-1 col-md-2">
+        <label for="preprocThres">Threshold</label>
+        <input type="text" value="0" name="preprocThres" id="preprocThres" class="form-control">
+      </div>
+      <div class="form-group col-md-2">
+        <button type="button" id="thresdVisu" class="btn btn-outline-success pill px-3 py-2 mt-4">Visualize</button>
+      </div>
+    </div>
+    <div class="text-center py-3">
+      <button type="submit" class="btn btn-outline-success pill px-3 py-2">Start preprocess</button>
+    </div>
+  </form>
+
+  <div id="preprocGraph" class="lineChart my-3"></div>
+
+  <script src="http://localhost:3000/vendor/jquery/jquery.min.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <script src="http://localhost:3000/graph.js"></script>
+  <script src="http://localhost:3000/main.js"></script>
+</body>
+
+</html>
